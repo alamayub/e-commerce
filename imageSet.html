@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<title>Image Set</title>
+	<style type="text/css">
+		div {
+			float: left;
+		}
+		img {
+			height: 460px;
+			
+		}
+		.data {
+			background-color: lightgray; 
+			padding: 20px;
+			width: 20%;
+			height: auto;
+		}
+	</style>
+</head>
+<body>
+	<div ng-app="myApp" ng-controller="myCtrl">
+		<div class="data" ng-repeat="x in data">
+			<img ng-src="{{x.image}}">
+			<p>{{x.name}}</p>
+			<del>{{x.price}}</del><ins>{{x.mrp}}</ins>
+			<p>{{x.per}}</p>
+		</div>
+	</div>
+	<script type="text/javascript">
+		angular.module('myApp' ,[]).controller('myCtrl', function($scope) {
+			$scope.data = [
+				{"name":"American Tourister Fizz Sch 32 L Bagpack", "image":"bag1.jpeg", "price":918, "mrp":2300, "per":60},
+				{"name":"American Tourister Fizz Sch 32.5 L Bagpack", "image":"bag2.jpeg", "price":999, "mrp":2300, "per":56},
+				{"name":"Billion HiStorage Bagpack", "image":"bag3.jpeg", "price":599, "mrp":1599, "per":62},
+				{"name":"Inlander 1008-1 Black Hiking Trekking Travel Backpack", "image":"bag4.jpeg", "price":1679, "mrp":3900, "per":58},
+				{"name":"American Tourister Fizz Sch Bag 32.5 L Backpack", "image":"bag5.jpeg", "price":999, "mrp":2300, "per":58}
+			];
+		});
+	</script>
+</body>
+</html>

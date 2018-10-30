@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<title>Home</title>
+	<style type="text/css">
+		form input[type=text], input[type=password] {
+    		width: 100%;
+    		padding: 8px 12px;
+    		margin: 8px 0;
+    		display: inline-block;
+    		border: 1px solid #ccc;
+    		box-sizing: border-box;
+		}
+		form button {
+    		background-color: #4CAF50;
+    		color: white;
+    		padding: 10px 16px;
+    		margin: 8px 0;
+    		border: none;
+    		cursor: pointer;
+    		width: 100%;
+		}
+
+		button:hover {
+    		opacity: 0.8;
+		}
+		.cancelbtn {
+    		width: auto;
+    		padding: 10px 18px;
+    		background-color: #f44336;
+		}
+		.imgcontainer {
+    		text-align: center;
+    		margin: 24px 0 12px 0;
+    		position: relative;
+		}
+
+		img.avatar {
+    		width: 40%;
+    		border-radius: 50%;
+		}
+
+		.container {
+ 		   	padding: 16px;
+		}
+
+		span.psw {
+    		float: right;
+    		padding-top: 16px;
+		}
+		.modal {
+    		display: none; 
+    		position: absolute; 
+    		z-index: 1;
+    		left: 0;
+    		top: 0;
+    		width: 100%; 
+    		height: 100%;
+    		opacity: .9;
+		}
+		.modal-content {
+    		background-color: #fefefe;
+    		margin: 3% 30% 3% 30%;
+    		border: 1px solid #888;
+    		width: auto; 
+		}
+		.close {
+    		position: absolute;
+    		right: 25px;
+    		top: 0;
+    		color: #000;
+    		font-size: 35px;
+    		font-weight: bold;
+		}
+
+		.close:hover,
+		.close:focus {
+    		color: red;
+    		cursor: pointer;
+		}
+		.animate {
+    		-webkit-animation: animatezoom 0.6s;
+    		animation: animatezoom 0.6s
+		}
+
+		@-webkit-keyframes animatezoom {
+    		from {-webkit-transform: scale(0)} 
+    		to {-webkit-transform: scale(1)}
+		}
+    
+		@keyframes animatezoom {
+    		from {transform: scale(0)} 
+    		to {transform: scale(1)}
+		}
+		@media screen and (max-width: 300px) {
+    		span.psw {
+       			display: block;
+       			float: none;
+    		}
+    		.cancelbtn {
+       			width: 100%;
+    		}
+		}
+
+
+
+		body {
+			font-family: Arial, Helvetica, sans-serif;
+			background-color: lightgray;
+		}
+		#nav {
+			padding-left: 10%;
+			background-color: white;
+			border-bottom: 1px solid black;
+		}
+		.navBar {
+			display: block;
+			float: left;
+			margin-left: 2.5%;
+			margin-right: 2.5%;
+		}
+		.navHead {
+			cursor: pointer;
+			font-family: sans-serif;
+			line-height: 40px;
+		}
+		.navBar a {
+			color: black;
+			font-size: 13px;
+			font-family: sans-serif;
+			font-weight: bold;
+		}
+		header {			
+			background-color: blue;
+			font-family: sans-serif;
+			font-weight: bold;
+			text-align: center;
+		}
+		a {
+			text-decoration: none;
+		}
+		header a:hover {
+			color: #fff;
+		}
+		#id0 {
+			text-align: center;
+		}
+		.logo {
+			color: #fff;
+			font-size: 20px;
+		}
+		.plusMem {
+			color: #fff;
+			font-size: 12px;
+		}
+		#searchBar {
+			margin-top: 5px;
+			line-height: 50px;
+		}
+		.search {
+			width: 75vh;
+			height: 40px;
+			border-radius: 3px;
+			border: 1px solid white;
+			padding: 1vh;
+		}
+		#login {
+			text-align: center;
+			line-height: 60px;
+			color: white;
+			font-family: sans-serif;
+			letter-spacing: 1px;
+		}
+		#cart, #more {
+			line-height: 60px;
+			color: #fff;
+			letter-spacing: 1px;
+		}
+		#link1 {
+			margin: 0;
+			text-align: center;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+		#link1 div {
+			margin: 0;
+			padding: 0;
+		}
+		#link1 a {
+			margin: 0;
+			padding: 0;
+		}
+		#link1 img {
+			height: 195px;
+			border-radius: 5px;
+		}
+		#offDiv {
+			margin: 0;
+			text-align: center;
+		}
+		#offDiv div {
+			margin: 0;
+			padding: 0;
+		}
+		#offDiv a {
+			margin: 0;
+			padding: 0;
+		}
+		#offDiv img {
+			height: 150px;
+			border-radius: 5px;
+		}
+		#imageDiv {
+			padding-top: 10px;
+			padding-bottom: 10px;
+			text-align: center;
+		}
+		#imageDiv div {
+			width: 100%;
+			height: auto;
+		}
+		#imageDiv img {
+			height: 100%;
+			width: 100%;
+			border-radius: 5px;
+		}
+		#brandDiv {
+			padding: 15px;
+			text-align: center;
+		}
+		#brandDiv div div {
+			padding: 20px;
+		}
+
+		#brandDiv img {
+			height: 160px;
+			width: 140px;
+			padding: 20px;
+		}
+		#brandDiv div div div {
+			padding: 0;
+			margin: 0;
+			height: 180px;
+		}
+		#brandDiv div div div:hover {
+			transform: scale(1.2);
+			transition: .5s;
+		}
+		#brandDiv a:hover {
+			color: blue;
+			text-decoration: none;
+			font-family: sans-serif;
+		}
+		#textDiv {
+			background-color: #fff;
+			padding-top: 50px;
+			padding-left: 20px;
+		}
+		#textDiv h4 {
+			font-size: 18px;
+		}
+		#textDiv p {
+			color: black;
+			opacity: .7;
+			font-size: 13px;
+			font-family: sans-serif;
+		}
+		ul {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+		ul li {
+			margin: 0;
+			padding: 0;
+		}
+		footer a, p{
+			color: #fff;
+			font-family: sans-serif;
+			font-size: 12px;
+		}
+		#ulD {
+			color: gray;
+		}
+		footer a:hover {
+			color: #fff;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="id01" class="modal">
+  		<form class="modal-content animate">
+    		<div class="imgcontainer">
+      			<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+     			<img src="img_avatar2.png" alt="Avatar" class="avatar">
+    		</div>
+    		<div class="container">
+      			<label for="uname"><b>Username</b></label>
+      			<input type="text" placeholder="Enter Username" name="uname" required>
+
+      			<label for="psw"><b>Password</b></label>
+      			<input type="password" placeholder="Enter Password" name="psw" required>
+        
+      			<button type="submit">Login</button>
+      			<label style="float: left;">
+        			<input type="checkbox" checked="checked" name="remember"> Remember me
+      			</label>
+      			<span style="float: right;">Forgot <a href="#">password?</a></span>
+    		</div>
+
+    		<div class="container" style="background-color:#f1f1f1">
+      			<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      			<span class="psw" style="float: right;">SignUp <a href="#">Here</a></span>
+    		</div>
+  		</form>
+	</div>
+
+	<script>
+		var modal = document.getElementById('id01');
+		window.onclick = function(event) {
+    		if (event.target == modal) {
+        		modal.style.display = "none";
+    		}
+		}
+	</script>
+
+
+	<header>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-1" id="id0">
+					<i><a href="index.html" class="logo">Flipkart</a><br></i>
+					<i><a href="#" class="plusMem">ExplorePlus</a></i>
+				</div>
+				<div class="col-md-6" style="height: 45px;">
+					<div class="customDiv" id="searchBar">
+						<input type="text" name="search" class="search" placeholder="Search your favourite...">
+					</div>
+				</div>
+				<div class="col-md-2 offset-md-1" style="height: 50px;">
+					<div class="customDiv" style="text-align: center;">
+						<a href="#" id="login" onclick="document.getElementById('id01').style.display='block'">Login & SignUp</a>
+					</div>
+				</div>
+				<div class="col-md-1" style="height: 50px;">
+					<div class="customDiv">
+						<a href="#" id="more">More</a>
+					</div>
+				</div>
+				<div class="col-md-1" style="height: 50px;">
+					<div class="customDiv">
+						<a href="#" id="cart">Cart</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<section>
+		<div class="container-fluid">
+			<div class="row" id="nav">
+				<div class="navBar">
+					<a href="electronics.html" class="navHead">Electronics</a>
+				</div>
+				<div class="navBar">
+					<a href="TVs.html" class="navHead">TVs & Appliances</a>
+				</div>
+				<div class="navBar">
+					<a href="Men.html" class="navHead">Men</a>
+				</div>
+				<div class="navBar">
+					<a href="Women.html" class="navHead">Women</a>
+				</div>
+				<div class="navBar">
+					<a href="BabyKids.html" class="navHead">Baby & Kids</a>
+				</div>
+				<div class="navBar">
+					<a href="HomeFurniture.html" class="navHead">Home & Furniture</a>
+				</div>
+				<div class="navBar">
+					<a class="navHead">Books, Sports & More</a>
+				</div>
+				<div class="navBar">
+					<a class="navHead">Offer Zone</a>
+				</div>
+			</div>
+		</div>
+		<div class="slideshow-container">
+			<div class="mySlides"><img src="f_img.jpg" style="width: 100%; height: 300px;"></div>
+			<div class="mySlides"><img src="s_img.jpg" style="width: 100%; height: 300px;"></div>
+			<div class="mySlides"><img src="t_img.jpg" style="width: 100%; height: 300px;"></div>
+			<div class="mySlides"><img src="fo_img.jpg" style="width: 100%; height: 300px;"></div>
+		</div>
+		<script>
+			var slideIndex = 0;
+			showSlides();
+			function showSlides() {
+    			var i;
+    			var slides = document.getElementsByClassName("mySlides");
+    			for (i = 0; i < slides.length; i++) {
+       				slides[i].style.display = "none";  
+    			}
+    			slideIndex++;
+    			if (slideIndex > slides.length) {slideIndex = 1}    
+    			slides[slideIndex-1].style.display = "block";  
+    			setTimeout(showSlides, 2000);
+			}
+		</script>
+		<div class="container-fluid" ng-app="myApp" ng-controller="myCtrl">
+			<div id="imageDiv" class="row">
+				<div class="col-md-4">
+					<a href="#"><img src="1.jpg"></a>
+				</div>
+				<div class="col-md-4">
+					<a href="#"><img src="2.jpg"></a>
+				</div>
+				<div class="col-md-4">
+					<a href="#"><img src="3.jpg"></a>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div id="imageDiv" class="row">
+				<div class="col-md-4">
+					<a href="#"><img src="4.jpg"></a>
+				</div>
+				<div class="col-md-4">
+					<a href="#"><img src="5.jpg"></a>
+				</div>
+				<div class="col-md-4">
+					<a href="#"><img src="6.jpg"></a>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div class="row" id="link1">
+				<div class="col-md-3">
+					<a href="#"><img src="syska1.jpg"></a>
+				</div>
+				<div class="col-md-3">
+					<a href="#"><img src="headphone.jpg"></a>
+				</div>
+				<div class="col-md-3">
+					<a href="#"><img src="oppo.jpg"></a>
+				</div>
+				<div class="col-md-3">
+					<a href="#"><img src="accer.jpg"></a>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div class="row" id="offDiv">
+				<div class="col-md-3">
+					<a href="#"><img src="50.jpg"></a>
+				</div>
+				<div class="col-md-3">
+					<a href="#"><img src="60.jpg"></a>
+				</div>
+				<div class="col-md-3">
+					<a href="#"><img src="70.jpg"></a>
+				</div>
+				<div class="col-md-3">
+					<a href="#"><img src="80.jpg"></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="container-fluid">
+			<div id="imageDiv" class="row">
+				<div class="col-md-4">
+					<a href="#"><img src="tv.jpg"></a>
+				</div>
+				<div class="col-md-4">
+					<a href="#"><img src="powerbank.jpg"></a>
+				</div>
+				<div class="col-md-4">
+					<a href="#"><img src="furniture.jpg"></a>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div id="brandDiv" class="row">
+				<div class="col-md-6" style="background-color: #fff;">
+					<div class="row">
+						<div class="col-md-3">
+							<a href=""><img src="canon.jpg"></a><br>
+							<a href="#">Canon</a>
+						</div>
+						<div class="col-md-3" >
+							<a href="#"><img src="beardo.jpg"></a><br>
+							<a href="#">Beardo</a>
+						</div>
+						<div class="col-md-3">
+							<a href="#"><img src="milton.jpg"></a><br>
+							<a href="#">Milton</a>
+						</div>
+						<div class="col-md-3">
+							<a href="#"><img src="syska.jpg"></a><br>
+							<a href="#">Syska</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6" style="background-color: #fff;">
+					<div class="row">
+						<div class="col-md-3">
+							<a href="#"><img src="mb.jpg" ></a><br>
+							<a href="#">MB</a>
+						</div>
+						<div class="col-md-3">
+							<a href="#"><img src="aosmith.jpg"></a><br>
+							<a href="#">AOSmith</a>
+						</div>
+						<div class="col-md-3">
+							<a href="#"><img src="seagate.jpg"></a><br>
+							<a href="#">Seagate</a>
+						</div>
+						<div class="col-md-3">
+							<a href="#"><img src="kaff.jpg"></a><br>
+							<a href="#">Kaff</a>
+						</div>
+					</div>
+				</div>									
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div id="textDiv" class="row">
+				<h4>Online Shopping in India</h4>
+				<p>Clothes, electronics, accessories - whatever your need for the hour maybe, Flipkart, your favorite online shopping site, is sure to spoil you with a wide range of products. You don't have to wait for the weekends to shop as you can shop online on your way back home after work. Almost all popular brands across categories sell their products online, thereby bringing you closer to your preferences. Oh, and let's not forget about the various discounts on these products which make them an offer that is too hard to resist. So, are you all set to head online and shop? Let's take a look at what Flipkart has in store for you, shall we?</p>
+
+				<h4>Buy Electronics Online at Attractive Prices</h4>
+				<p>Appliances have become an integral aspect of managing your home. Take a walk through your home and you would know the number of appliances we use to help with our day-to-day activities. Just like how Joey points out in the popular sitcom Friends, all your furniture in your living room would be pointed towards the television. A walk into the kitchen and the work area would give you a glimpse into the importance of having a washing machine, a refrigerator and small appliances, such as a microwave oven, at your disposal. You no longer have to head to a store as you can buy electronics from Flipkart at delightful prices. Choose from an enticing range of products from popular brands such as Sony, Samsung, Philips, Apple and Xiaomi. What's more? You can have these products delivered to your doorstep. Some of the popular appliances that you can buy online include home theaters from Sony, audio players from Samsung, speakers from JBL and video accessories from Philips. That's not all, you also get to buy mobile phones online at great prices. Pick from a wide selection of smartphones which include popular Android phones, such as the Samsung S9 and the Redmi Note 5 and the range of Apple iPhones. All you have to do is open the Flipkart page, type the product of your choice and hit the search button. You'll then be exposed to a wide range of products to choose from.</p>
+
+				<h4>Buy Clothes and Accessories Online - Variety at Your Fingertips</h4>
+				<p>Jewelry, shirts, T-shirts, trousers, handbags - name it and you will be spoilt for choice with a wide variety as you shop for accessories and clothes online. Go online shopping and pick from a wide range of products from your favorite brands which include United Colors of Benetton, Roadster, Woodlands, Wildcraft, Forever 21, Nike and more. While the men can choose from a large collection of apparels, footwear, accessories, and watches, the women can shop till they drop from the exhaustive range of kurtis, jewelry, ethnic wear and grooming products online. You can find a wide collection of apparel for children too.</p>
+				<h4>Buy Home and Furniture Items Online - Everything You Would Need for a Beautiful Pad</h4>
+				<p>A home looks complete when it is organized with different pieces of furniture that go with the decor. Don't compromise on your home decor as you can choose from an exhilarating range of home furnishing products online. From dining tables and sofa sets, to colorful bedsheets and intricate wall-clocks, you can find everything you need online. And the best part is, you can add all your preferred products to your cart and order them in one go. You also have the freedom to pay for the products from any of the payment methods available on the site. Some of the popular modes of payment include credit/debit card and cash on delivery.</p>
+				<h4>History, Fiction, Fantasy - Buy Your Favorite Books Online</h4>
+				<p>Reading is a great way to expand your knowledge and enhance your creativity. While the works of RK Narayan or Durjoy Datta would take you through relatable emotions via interesting characters and situations, authors like JK Rowling and Stephen King have successfully given us a glimpse into an entirely different world brimming of magic and surrealism. Head to your favorite online shopping site and get set to be spoilt for choice with the variety of books which are available at your disposal. From a huge collection of bestsellers to hardbound copies of your favorite modern-day classics like Harry Potter, there are a number of stories to be read and explored across various genres. That's not all, you can also shop online for study materials to help you score better in competitive examinations. Whether you need a textbook to help you understand the basic concepts better or a study guide that has a solution to all your queries, you have access to some of the best study materials online. Flipkart has a wide range of books across categories such as children's books, audiobooks, computer books, cookery books, and handy guides. So, go ahead, order copies of your favorite books online and immerse yourself in a world with characters that stay with you, through thick and thin.</p>
+				<h4>Buying Guides - Your Assistants in Helping You Buy the Most Suitable Products</h4>
+				<p>Sometimes, it can get a little overwhelming when you are exposed to a wide range of products. That's where the buying guides would come to your rescue. Flipkart has a set of guides that are specially curated to help you buy the right product across various categories. For example, if you would like to buy mobile phones online and are confused about what to pick, all you have to do is to click on the buying guide option. The guide will take you through the most important points to look for while buying a phone. You can also have a glance at the various reviews of the products posted by previous buyers that may help you make an informed buying decision. Convenient and simple, shop for your favorite appliances, gifts, and products online at Flipkart and let them arrive at your doorstep - one parcel at a time with a cheerful smile.</p>
+			</div>
+		</div>
+	</section>
+
+	<footer>
+		<div class="container-fluid">
+			<div class="row" style="background-color: #00264d; height: auto; padding: 50px; text-align: none;">
+				<div class="col-md-7">
+					<div class="row">
+						<div class="col-md-3">
+							<ul>
+								<p id="ulD">ABOUT</p>
+								<li><a href="#">Contact Us</a></li>
+								<li><a href="#">About Us</a></li>
+								<li><a href="#">Careers</a></li>
+								<li><a href="#">Flipkart Stories</a></li>
+								<li><a href="#">Press</a></li>
+							</ul>
+						</div>
+						<div class="col-md-3">
+							<ul>
+								<p id="ulD">HELP</p>
+								<li><a href="#">Payments</a></li>
+								<li><a href="#">Shipping</a></li>
+								<li><a href="#">Cancellation & Returns</a></li>
+								<li><a href="#">FAQ</a></li>
+								<li><a href="#">Report Infringement</a></li>
+							</ul>
+						</div>
+						<div class="col-md-3">
+							<ul>
+								<p id="ulD">POLICY</p>
+								<li><a href="#">Return Policy</a></li>
+								<li><a href="#">Terms of Use</a></li>
+								<li><a href="#">Security</a></li>
+								<li><a href="#">Privacy</a></li>
+								<li><a href="#">Sitemap</a></li>
+								<li><a href="#">EPR Compliance</a></li>
+							</ul>
+						</div>
+						<div class="col-md-3">
+							<ul>
+								<p id="ulD">SOCIAL</p>
+								<li><a href="#">Facebook</a></li>
+								<li><a href="#">Twitter</a></li>
+								<li><a href="#">YouTube</a></li>
+								<li><a href="#">Google Plus</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-5">
+					<div class="row">
+						<div class="col-md-6" style="padding: 0; margin: 0;">
+							<div style="border-left: 1px solid gray; padding-left: 20px;">
+								<p id="ulD">Mail Us:</p>
+								<p>Flipkart Internet Pvt Ltd Block B (Begonia),<br>Ground Floor, Embassy Tech Village,<br>Outer Ring Road, Devarabeesanahalli Village,<br>Varthur Hobli, Bengaluru East Taluk,<br>Bengaluru District,<br>Karnataka, India, 560103.</p>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<p id="ulD">Registered Office Address:</p>
+							<p>Flipkart Internet Private Limited,<br>Vaishnavi Summit, Ground Floor, 7th Main,<br>80 Feet Road, 3rd Block,<br>Koramangala,<br>Bengaluru - 560034<br>India<br>CIN : U51109KA2012PTC066107<br>Telephone: 1800 208 9898</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<title>Printers</title>
+	<style type="text/css">
+		img {
+			height: 300px;
+			width: 95%;
+		}
+		body {
+			font-family: Arial, Helvetica, sans-serif;
+			background-color: lightgray;
+		}
+		#sortData {
+			background-color: red; 
+			height: 20px; 
+			float: left;
+			font-family: sans-serif;
+			font-weight: bold;
+			font-size: 12px;
+			padding: 20px 40px 20px 40px;
+		}
+		#nav {
+			padding-left: 10%;
+			background-color: white;
+			border-bottom: 1px solid black;
+		}
+		.navBar {
+			display: block;
+			float: left;
+			margin-left: 2.5%;
+			margin-right: 2.5%;
+		}
+		.navHead {
+			cursor: pointer;
+			font-family: sans-serif;
+			line-height: 40px;
+		}
+		.navBar ul {
+			margin: 0;
+			list-style: none;
+			outline: none;
+			position: absolute;
+			width: 20%;
+		}
+		.navBar ul li {
+			margin: 0;
+			padding: 0;
+			display: none;
+			height: auto;
+			background-color: rgb(255, 255, 255);
+		}
+		.navBar ul li a {
+			margin-left: 5%;
+			opacity: .6;
+			font-size: 11px;
+		}
+		.navBar a {
+			color: black;
+			font-size: 13px;
+			font-family: sans-serif;
+			font-weight: bold;
+		}
+		.navBar:hover ul li {
+			display: block;
+		}
+		header {
+			height: 60px;
+			background-color: blue;
+			font-family: sans-serif;
+			font-weight: bold;
+			text-align: center;
+		}
+		a {
+			text-decoration: none;
+		}
+		header a:hover {
+			color: #fff;
+		}
+		#id0 {
+			text-align: center;
+		}
+		.logo {
+			color: #fff;
+			font-size: 20px;
+		}
+		.plusMem {
+			color: #fff;
+			font-size: 12px;
+		}
+		#searchBar {
+			margin-top: 5px;
+			line-height: 50px;
+		}
+		.search {
+			width: 75vh;
+			height: 40px;
+			border-radius: 3px;
+			border: 1px solid white;
+			padding: 1vh;
+		}
+		#login {
+			text-align: center;
+			line-height: 60px;
+			color: white;
+			font-family: sans-serif;
+			letter-spacing: 1px;
+		}
+		#cart, #more {
+			line-height: 60px;
+			color: #fff;
+			letter-spacing: 1px;
+		}
+
+
+
+		#textDiv {
+			background-color: #fff;
+			padding-top: 20px;
+			padding-left: 20px;
+		}
+		#textDiv p {
+			color: black;
+			opacity: .7;
+			font-size: 13px;
+			font-family: sans-serif;
+		}
+		ul {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+		ul li {
+			margin: 0;
+			padding: 0;
+		}
+		footer a, p{
+			color: #fff;
+			font-family: sans-serif;
+			font-size: 12px;
+		}
+		#ulD {
+			color: gray;
+		}
+		footer a:hover {
+			color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-1" id="id0" style="height: 50px;">
+					<i><a href="#" class="logo">Flipkart</a><br></i>
+					<i><a href="#" class="plusMem">ExplorePlus</a></i>
+				</div>
+				<div class="col-md-6" style="height: 45px;">
+					<div class="customDiv" id="searchBar">
+						<input type="text" name="search" class="search" placeholder="Search your favourite...">
+					</div>
+				</div>
+				<div class="col-md-2 offset-md-1" style="height: 50px;">
+					<div class="customDiv" style="text-align: center;">
+						<a href="login.html" id="login">Login & SignUp</a>
+					</div>
+				</div>
+				<div class="col-md-1" style="height: 50px;">
+					<div class="customDiv">
+						<a href="#" id="more">More</a>
+					</div>
+				</div>
+				<div class="col-md-1" style="height: 50px;">
+					<div class="customDiv">
+						<a href="#" id="cart">Cart</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<section>
+		<div class="container-fluid">
+			<div class="row" id="nav">
+				<div class="navBar">
+					<a class="navHead">Electronics</a>
+					<ul>
+						<li><a href="#">Mobiles</a></li>
+						<li><a href="#">Mobile Accessories</a></li>
+						<li><a href="#">Laptops</a></li>
+						<li><a href="#">Camera</a></li>
+						<li><a href="#">Smart Watch</a></li>
+						<li><a href="#">Computer Accessories</a></li>
+					</ul>
+				</div>
+				<div class="navBar">
+					<a class="navHead">TVs & Appliances</a>
+					<ul>
+						<li><a href="#">TV by Brand</a></li>
+						<li><a href="#">TV by screen size</a></li>
+						<li><a href="#">Washing Machine</a></li>
+						<li><a href="#">Refrigerator</a></li>
+						<li><a href="#">Air Conditioners</a></li>
+					</ul>
+				</div>
+				<div class="navBar">
+					<a class="navHead">Men</a>
+					<ul>
+						<li><a href="#">Footwear</a></li>
+						<li><a href="#">Men's Grooming</a></li>
+						<li><a href="#">Top Wear</a></li>
+						<li><a href="#">Bottom Wear</a></li>
+						<li><a href="#">Accessories</a></li>
+					</ul>
+				</div>
+				<div class="navBar">
+					<a class="navHead">Women</a>
+					<ul>
+						<li><a href="#">Western Wear</a></li>
+						<li><a href="#">Sports Wear</a></li>
+						<li><a href="#">Ethnic Wear</a></li>
+						<li><a href="#">Footwear</a></li>
+						<li><a href="#">Beauty & Grooming</a></li>
+					</ul>
+				</div>
+				<div class="navBar">
+					<a class="navHead">Baby & Kids</a>
+					<ul>
+						<li><a href="#">Boy's Clothing</a></li>
+						<li><a href="#">Girls's Clothing</a></li>
+						<li><a href="#">Toy</a></li>
+						<li><a href="#">Baby Care</a></li>
+						<li><a href="#">School Supplies</a></li>
+					</ul>
+				</div>
+				<div class="navBar">
+					<a class="navHead">Home & Furniture</a>
+					<ul>
+						<li><a href="#">Kitchen & Dinning</a></li>
+						<li><a href="#">Furniture</a></li>
+						<li><a href="#">Home Decor</a></li>
+						<li><a href="#">Lighting</a></li>
+						<li><a href="#">Kitchen Storage</a></li>
+					</ul>
+				</div>
+				<div class="navBar">
+					<a class="navHead">Books, Sports & More</a>
+					<ul>
+						<li><a href="#">Books</a></li>
+						<li><a href="#">Gaming</a></li>
+						<li><a href="#">Stationery</a></li>
+						<li><a href="#">Music</a></li>
+						<li><a href="#">Sports</a></li>
+					</ul>
+				</div>
+				<div class="navBar">
+					<a class="navHead">Offer Zone</a>
+				</div>
+			</div>
+		</div>
+		
+		<div class="container-fluid" ng-app="myApp" ng-controller="myCtrl">
+			<div class="row" style="margin: 10px; margin-left: 0; margin-right: 0px;">
+				<div style="background-color: red; width: 18%; height: 50px;">
+					
+				</div>
+				<div style="background-color: white; width: 82%; padding-left: 2%;">
+					<div class="col-md-12" style="width: 100%; line-height: 40px; padding: 0; margin: 0;">
+						<div style="margin: 10px; float: left;">Sort By</div>
+						<div id="sortData" ng-click="para='price'">Price low to high</div>
+						<div id="sortData" style="" ng-click="para='per'">Discount</div>
+					</div>
+
+					<div class="col-md-3" ng-repeat="x in data | orderBy:para" style="float: left; border: 2px solid black; height: 400px;">
+						<a href="#"><img ng-src="{{x.image}}"></a>
+						<div>{{x.name}}</div>
+						<div><ins>{{x.price}}</ins><del>{{x.mrp}}</del><div>{{x.per}}</div></div>
+					</div>
+				</div>
+			</div>
+			<script type="text/javascript">
+				$(document).ready(function(){
+					$("#sortData").on({
+						click:function() {
+							$(this).css("border-bottom", "2px solid pink");
+						}
+					});
+				});
+			</script>-->
+			<script type="text/javascript">
+				angular.module('myApp' ,[]).controller('myCtrl', function($scope) {
+					$scope.data = [
+						{"name":"American Tourister Fizz Sch 32 L Bagpack", "image":"bag1.jpeg", "price":918, "mrp":2300, "per":60},
+						{"name":"American Tourister Fizz Sch 32.5 L Bagpack", "image":"bag2.jpeg", "price":999, "mrp":2300, "per":56},
+						{"name":"Billion HiStorage Bagpack", "image":"bag3.jpeg", "price":599, "mrp":1599, "per":62},
+						{"name":"Inlander 1008-1 Black Hiking Trekking Travel Backpack", "image":"bag4.jpeg", "price":1679, "mrp":3900, "per":58},
+						{"name":"American Tourister Fizz Sch Bag 32.5 L Backpack", "image":"bag5.jpeg", "price":999, "mrp":2300, "per":58}
+					];
+				});
+			</script>
+		</div>
+
+		<div class="container-fluid">
+			<div id="textDiv" class="row">
+				<p>Printers are the quintessential accessories that one must possess if you have a computer at home. These peripheral instruments help you in producing a hard copy of an electronic document in no time. From personal printers at home to networked printers shared by a group at places like an office or a cyber cafe, creating a physical copy of important files or documents is now a cake walk.</p>
+				
+				<p>With the advent of new technology over the decades, printers have undergone radical changes in the way they function. From noisy and bulky machines, these instruments have transformed into sleek devices with catchy appearance. Their functionalities too have modernised to make the user experience even more hassle-free. Moreover, these days, you can even get stuff printed directly from external storage devices like a memory card or a hard disk.</p>
+				
+				<p>Printers come in several varieties based on the technology they employ for printing an article. While some modern-technology printers employ laser to create representations of high quality texts with lots of graphics, some devices use liquid ink for the job. You must have seen the credit card readers at malls or shops. The receipts that these machines print are generated by thermal printers on heat-sensitive papers.</p>
+				<p>Flipkart presents a wide range of printers for you to choose from. Buy printers online with secure payment processing and save yourself the hassles of driving up to an electronic showroom on a lazy weekend. Dell, HP, Samsung, Canon, Epson, Xerox, Ricoh - name it and you will find the best brands online. Shop online for printers at Flipkart and rest assured of a fast delivery. You can even buy products using any payment mode - credit cards, net banking or even pay cash on delivery. If you are not satisfied with your product we have a user-friendly refund/replacement policy too.</p>
+			</div>
+		</div>
+	</section>
+
+	<footer>
+		<div class="container-fluid">
+			<div class="row" style="background-color: #00264d; height: auto; padding: 50px;">
+				<div class="col-md-7">
+					<div class="row">
+						<div class="col-md-3">
+							<ul>
+								<p id="ulD">ABOUT</p>
+								<li><a href="#">Contact Us</a></li>
+								<li><a href="#">About Us</a></li>
+								<li><a href="#">Careers</a></li>
+								<li><a href="#">Flipkart Stories</a></li>
+								<li><a href="#">Press</a></li>
+							</ul>
+						</div>
+						<div class="col-md-3">
+							<ul>
+								<p id="ulD">HELP</p>
+								<li><a href="#">Payments</a></li>
+								<li><a href="#">Shipping</a></li>
+								<li><a href="#">Cancellation & Returns</a></li>
+								<li><a href="#">FAQ</a></li>
+								<li><a href="#">Report Infringement</a></li>
+							</ul>
+						</div>
+						<div class="col-md-3">
+							<ul>
+								<p id="ulD">POLICY</p>
+								<li><a href="#">Return Policy</a></li>
+								<li><a href="#">Terms of Use</a></li>
+								<li><a href="#">Security</a></li>
+								<li><a href="#">Privacy</a></li>
+								<li><a href="#">Sitemap</a></li>
+								<li><a href="#">EPR Compliance</a></li>
+							</ul>
+						</div>
+						<div class="col-md-3">
+							<ul>
+								<p id="ulD">SOCIAL</p>
+								<li><a href="#">Facebook</a></li>
+								<li><a href="#">Twitter</a></li>
+								<li><a href="#">YouTube</a></li>
+								<li><a href="#">Google Plus</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-5">
+					<div class="row">
+						<div class="col-md-6" style="padding: 0; margin: 0;">
+							<div style="border-left: 1px solid gray; padding-left: 20px;">
+								<p id="ulD">Mail Us:</p>
+								<p>Flipkart Internet Pvt Ltd Block B (Begonia),<br>Ground Floor, Embassy Tech Village,<br>Outer Ring Road, Devarabeesanahalli Village,<br>Varthur Hobli, Bengaluru East Taluk,<br>Bengaluru District,<br>Karnataka, India, 560103.</p>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<p id="ulD">Registered Office Address:</p>
+							<p>Flipkart Internet Private Limited,<br>Vaishnavi Summit, Ground Floor, 7th Main,<br>80 Feet Road, 3rd Block,<br>Koramangala,<br>Bengaluru - 560034<br>India<br>CIN : U51109KA2012PTC066107<br>Telephone: 1800 208 9898</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+</body>
+</html>

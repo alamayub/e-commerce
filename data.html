@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<title>Home</title>
+	<style type="text/css">
+		form input[type=text], input[type=password] {
+    		width: 100%;
+    		padding: 8px 12px;
+    		margin: 8px 0;
+    		display: inline-block;
+    		border: 1px solid #ccc;
+    		box-sizing: border-box;
+		}
+		form button {
+    		background-color: #4CAF50;
+    		color: white;
+    		padding: 10px 16px;
+    		margin: 8px 0;
+    		border: none;
+    		cursor: pointer;
+    		width: 100%;
+		}
+
+		button:hover {
+    		opacity: 0.8;
+		}
+		.cancelbtn {
+    		width: auto;
+    		padding: 10px 18px;
+    		background-color: #f44336;
+		}
+		.imgcontainer {
+    		text-align: center;
+    		margin: 24px 0 12px 0;
+    		position: relative;
+		}
+
+		img.avatar {
+    		width: 40%;
+    		border-radius: 50%;
+		}
+
+		.container {
+ 		   	padding: 16px;
+		}
+
+		span.psw {
+    		float: right;
+    		padding-top: 16px;
+		}
+		.modal {
+    		display: none; 
+    		position: absolute; 
+    		z-index: 1;
+    		left: 0;
+    		top: 0;
+    		width: 100%; 
+    		height: 100%;
+    		opacity: .9;
+		}
+		.modal-content {
+    		background-color: #fefefe;
+    		margin: 3% 30% 3% 30%;
+    		border: 1px solid #888;
+    		width: auto; 
+		}
+		.close {
+    		position: absolute;
+    		right: 25px;
+    		top: 0;
+    		color: #000;
+    		font-size: 35px;
+    		font-weight: bold;
+		}
+
+		.close:hover,
+		.close:focus {
+    		color: red;
+    		cursor: pointer;
+		}
+		.animate {
+    		-webkit-animation: animatezoom 0.6s;
+    		animation: animatezoom 0.6s
+		}
+
+		@-webkit-keyframes animatezoom {
+    		from {-webkit-transform: scale(0)} 
+    		to {-webkit-transform: scale(1)}
+		}
+    
+		@keyframes animatezoom {
+    		from {transform: scale(0)} 
+    		to {transform: scale(1)}
+		}
+		@media screen and (max-width: 300px) {
+    		span.psw {
+       			display: block;
+       			float: none;
+    		}
+    		.cancelbtn {
+       			width: 100%;
+    		}
+		}
+
+
+
+		body {
+			font-family: Arial, Helvetica, sans-serif;
+			background-color: lightgray;
+		}
+		#nav {
+			padding-left: 10%;
+			background-color: white;
+			border-bottom: 1px solid black;
+		}
+		.navBar {
+			display: block;
+			float: left;
+			margin-left: 2.5%;
+			margin-right: 2.5%;
+		}
+		.navHead {
+			cursor: pointer;
+			font-family: sans-serif;
+			line-height: 40px;
+		}
+		.navBar ul {
+			margin: 0;
+			list-style: none;
+			outline: none;
+			position: absolute;
+			width: 20%;
+		}
+		.navBar ul li {
+			margin: 0;
+			padding: 0;
+			display: none;
+			height: auto;
+			background-color: rgb(255, 255, 255);
+		}
+		.navBar ul li a {
+			margin-left: 5%;
+			opacity: .6;
+			font-size: 11px;
+		}
+		.navBar a {
+			color: black;
+			font-size: 13px;
+			font-family: sans-serif;
+			font-weight: bold;
+		}
+		.navBar:hover ul li {
+			display: block;
+		}
+		header {			
+			background-color: blue;
+			font-family: sans-serif;
+			font-weight: bold;
+			text-align: center;
+		}
+		a {
+			text-decoration: none;
+		}
+		header a:hover {
+			color: #fff;
+		}
+		#id0 {
+			text-align: center;
+		}
+		.logo {
+			color: #fff;
+			font-size: 20px;
+		}
+		.plusMem {
+			color: #fff;
+			font-size: 12px;
+		}
+		#searchBar {
+			margin-top: 5px;
+			line-height: 50px;
+		}
+		.search {
+			width: 75vh;
+			height: 40px;
+			border-radius: 3px;
+			border: 1px solid white;
+			padding: 1vh;
+		}
+		#login {
+			text-align: center;
+			line-height: 60px;
+			color: white;
+			font-family: sans-serif;
+			letter-spacing: 1px;
+		}
+		#cart, #more {
+			line-height: 60px;
+			color: #fff;
+			letter-spacing: 1px;
+		}
+        
+
+
+		
+		ul {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+		ul li {
+			margin: 0;
+			padding: 0;
+		}
+		footer a, p{
+			color: #fff;
+			font-family: sans-serif;
+			font-size: 12px;
+		}
+		#ulD {
+			color: gray;
+		}
+		footer a:hover {
+			color: #fff;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="id01" class="modal">
+  		<form class="modal-content animate" action="/action_page.php">
+    		<div class="imgcontainer">
+      			<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+     			<img src="img_avatar2.png" alt="Avatar" class="avatar">
+    		</div>
+    		<div class="container">
+      			<label for="uname"><b>Username</b></label>
+      			<input type="text" placeholder="Enter Username" name="uname" required>
+
+      			<label for="psw"><b>Password</b></label>
+      			<input type="password" placeholder="Enter Password" name="psw" required>
+        
+      			<button type="submit">Login</button>
+      			<label style="float: left;">
+        			<input type="checkbox" checked="checked" name="remember"> Remember me
+      			</label>
+      			<span style="float: right;">Forgot <a href="#">password?</a></span>
+    		</div>
+
+    		<div class="container" style="background-color:#f1f1f1">
+      			<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      			<span class="psw" style="float: right;">SignUp <a href="#">Here</a></span>
+    		</div>
+  		</form>
+	</div>
+
+	<script>
+		var modal = document.getElementById('id01');
+		window.onclick = function(event) {
+    		if (event.target == modal) {
+        		modal.style.display = "none";
+    		}
+		}
+	</script>
+
+	<header>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-1" id="id0">
+					<i><a href="#" class="logo">Flipkart</a><br></i>
+					<i><a href="#" class="plusMem">ExplorePlus</a></i>
+				</div>
+				<div class="col-md-6" style="height: 45px;">
+					<div class="customDiv" id="searchBar">
+						<input type="text" name="search" class="search" placeholder="Search your favourite...">
+					</div>
+				</div>
+				<div class="col-md-2 offset-md-1" style="height: 50px;">
+					<div class="customDiv" style="text-align: center;">
+						<a href="#" id="login" onclick="document.getElementById('id01').style.display='block'">Login & SignUp</a>
+					</div>
+				</div>
+				<div class="col-md-1" style="height: 50px;">
+					<div class="customDiv">
+						<a href="#" id="more">More</a>
+					</div>
+				</div>
+				<div class="col-md-1" style="height: 50px;">
+					<div class="customDiv">
+						<a href="#" id="cart">Cart</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<section>
+		<div class="container-fluid">
+			<div class="row" id="nav">
+				<div class="navBar">
+					<a class="navHead">Electronics</a>
+					<ul>
+						<li><a href="#">Mobiles</a></li>
+						<li><a href="#">Mobile Accessories</a></li>
+						<li><a href="#">Laptops</a></li>
+						<li><a href="#">Camera</a></li>
+						<li><a href="#">Smart Watch</a></li>
+						<li><a href="#">Computer Accessories</a></li>
+					</ul>
+				</div>
+				<div class="navBar">
+					<a class="navHead">TVs & Appliances</a>
+					<ul>
+						<li><a href="#">TV by Brand</a></li>
+						<li><a href="#">TV by screen size</a></li>
+						<li><a href="#">Washing Machine</a></li>
+						<li><a href="#">Refrigerator</a></li>
+						<li><a href="#">Air Conditioners</a></li>
+					</ul>
+				</div>
+				<div class="navBar">
+					<a class="navHead">Men</a>
+					<ul>
+						<li><a href="#">Footwear</a></li>
+						<li><a href="#">Men's Grooming</a></li>
+						<li><a href="#">Top Wear</a></li>
+						<li><a href="#">Bottom Wear</a></li>
+						<li><a href="#">Accessories</a></li>
+					</ul>
+				</div>
+				<div class="navBar">
+					<a class="navHead">Women</a>
+					<ul>
+						<li><a href="#">Western Wear</a></li>
+						<li><a href="#">Sports Wear</a></li>
+						<li><a href="#">Ethnic Wear</a></li>
+						<li><a href="#">Footwear</a></li>
+						<li><a href="#">Beauty & Grooming</a></li>
+					</ul>
+				</div>
+				<div class="navBar">
+					<a class="navHead">Baby & Kids</a>
+					<ul>
+						<li><a href="#">Boy's Clothing</a></li>
+						<li><a href="#">Girls's Clothing</a></li>
+						<li><a href="#">Toy</a></li>
+						<li><a href="#">Baby Care</a></li>
+						<li><a href="#">School Supplies</a></li>
+					</ul>
+				</div>
+				<div class="navBar">
+					<a class="navHead">Home & Furniture</a>
+					<ul>
+						<li><a href="#">Kitchen & Dinning</a></li>
+						<li><a href="#">Furniture</a></li>
+						<li><a href="#">Home Decor</a></li>
+						<li><a href="#">Lighting</a></li>
+						<li><a href="#">Kitchen Storage</a></li>
+					</ul>
+				</div>
+				<div class="navBar">
+					<a class="navHead">Books, Sports & More</a>
+					<ul>
+						<li><a href="#">Books</a></li>
+						<li><a href="#">Gaming</a></li>
+						<li><a href="#">Stationery</a></li>
+						<li><a href="#">Music</a></li>
+						<li><a href="#">Sports</a></li>
+					</ul>
+				</div>
+				<div class="navBar">
+					<a class="navHead">Offer Zone</a>
+				</div>
+			</div>
+		</div>			
+	</section>
+	
+
+
+
+
+
+
+	<footer>
+		<div class="container-fluid">
+			<div class="row" style="background-color: #00264d; height: auto; padding: 50px;">
+				<div class="col-md-7">
+					<div class="row">
+						<div class="col-md-3">
+							<ul>
+								<p id="ulD">ABOUT</p>
+								<li><a href="#">Contact Us</a></li>
+								<li><a href="#">About Us</a></li>
+								<li><a href="#">Careers</a></li>
+								<li><a href="#">Flipkart Stories</a></li>
+								<li><a href="#">Press</a></li>
+							</ul>
+						</div>
+						<div class="col-md-3">
+							<ul>
+								<p id="ulD">HELP</p>
+								<li><a href="#">Payments</a></li>
+								<li><a href="#">Shipping</a></li>
+								<li><a href="#">Cancellation & Returns</a></li>
+								<li><a href="#">FAQ</a></li>
+								<li><a href="#">Report Infringement</a></li>
+							</ul>
+						</div>
+						<div class="col-md-3">
+							<ul>
+								<p id="ulD">POLICY</p>
+								<li><a href="#">Return Policy</a></li>
+								<li><a href="#">Terms of Use</a></li>
+								<li><a href="#">Security</a></li>
+								<li><a href="#">Privacy</a></li>
+								<li><a href="#">Sitemap</a></li>
+								<li><a href="#">EPR Compliance</a></li>
+							</ul>
+						</div>
+						<div class="col-md-3">
+							<ul>
+								<p id="ulD">SOCIAL</p>
+								<li><a href="#">Facebook</a></li>
+								<li><a href="#">Twitter</a></li>
+								<li><a href="#">YouTube</a></li>
+								<li><a href="#">Google Plus</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-5">
+					<div class="row">
+						<div class="col-md-6" style="padding: 0; margin: 0;">
+							<div style="border-left: 1px solid gray; padding-left: 20px;">
+								<p id="ulD">Mail Us:</p>
+								<p>Flipkart Internet Pvt Ltd Block B (Begonia),<br>Ground Floor, Embassy Tech Village,<br>Outer Ring Road, Devarabeesanahalli Village,<br>Varthur Hobli, Bengaluru East Taluk,<br>Bengaluru District,<br>Karnataka, India, 560103.</p>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<p id="ulD">Registered Office Address:</p>
+							<p>Flipkart Internet Private Limited,<br>Vaishnavi Summit, Ground Floor, 7th Main,<br>80 Feet Road, 3rd Block,<br>Koramangala,<br>Bengaluru - 560034<br>India<br>CIN : U51109KA2012PTC066107<br>Telephone: 1800 208 9898</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+</body>
+</html>

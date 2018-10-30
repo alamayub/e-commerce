@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <title>Electronics</title>
+  <style type="text/css">
+    form input[type=text], input[type=password] {
+        width: 100%;
+        padding: 8px 12px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+    form button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 16px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    button:hover {
+        opacity: 0.8;
+    }
+    .cancelbtn {
+        width: auto;
+        padding: 10px 18px;
+        background-color: #f44336;
+    }
+    .imgcontainer {
+        text-align: center;
+        margin: 24px 0 12px 0;
+        position: relative;
+    }
+
+    img.avatar {
+        width: 40%;
+        border-radius: 50%;
+    }
+
+    .container {
+        padding: 16px;
+    }
+
+    span.psw {
+        float: right;
+        padding-top: 16px;
+    }
+    .modal {
+        display: none; 
+        position: absolute; 
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%; 
+        height: 100%;
+        opacity: .9;
+    }
+    .modal-content {
+        background-color: #fefefe;
+        margin: 3% 30% 3% 30%;
+        border: 1px solid #888;
+        width: auto; 
+    }
+    .close {
+        position: absolute;
+        right: 25px;
+        top: 0;
+        color: #000;
+        font-size: 35px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: red;
+        cursor: pointer;
+    }
+    .animate {
+        -webkit-animation: animatezoom 0.6s;
+        animation: animatezoom 0.6s
+    }
+
+    @-webkit-keyframes animatezoom {
+        from {-webkit-transform: scale(0)} 
+        to {-webkit-transform: scale(1)}
+    }
+    
+    @keyframes animatezoom {
+        from {transform: scale(0)} 
+        to {transform: scale(1)}
+    }
+    @media screen and (max-width: 300px) {
+        span.psw {
+            display: block;
+            float: none;
+        }
+        .cancelbtn {
+            width: 100%;
+        }
+    }
+
+
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: lightgray;
+    }
+    #nav {
+      padding-left: 10%;
+      background-color: white;
+      border-bottom: 1px solid black;
+    }
+    .navBar {
+      display: block;
+      float: left;
+      margin-left: 2.5%;
+      margin-right: 2.5%;
+    }
+    .navHead {
+      cursor: pointer;
+      font-family: sans-serif;
+      line-height: 40px;
+    }
+    .navBar a {
+      color: black;
+      font-size: 13px;
+      font-family: sans-serif;
+      font-weight: bold;
+    }
+    header {      
+      background-color: blue;
+      font-family: sans-serif;
+      font-weight: bold;
+      text-align: center;
+    }
+    a {
+      text-decoration: none;
+    }
+    header a:hover {
+      color: #fff;
+    }
+    #id0 {
+      text-align: center;
+    }
+    .logo {
+      color: #fff;
+      font-size: 20px;
+    }
+    .plusMem {
+      color: #fff;
+      font-size: 12px;
+    }
+    #searchBar {
+      margin-top: 5px;
+      line-height: 50px;
+    }
+    .search {
+      width: 75vh;
+      height: 40px;
+      border-radius: 3px;
+      border: 1px solid white;
+      padding: 1vh;
+    }
+    #login {
+      text-align: center;
+      line-height: 60px;
+      color: white;
+      font-family: sans-serif;
+      letter-spacing: 1px;
+    }
+    #cart, #more {
+      line-height: 60px;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+    .column {
+      margin: 0;
+      padding: 0;
+      width: 33.33%;
+      background-color: #fff;
+    }
+    .column h2 {
+      text-align: center;
+    }
+    .column p {
+      color: black;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    ul li {
+      margin: 0;
+      padding: 0;
+    }
+    footer a, p{
+      color: #fff;
+      font-family: sans-serif;
+      font-size: 12px;
+    }
+    #ulD {
+      color: gray;
+    }
+    footer a:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="id01" class="modal">
+      <form class="modal-content animate">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+          <img src="img_avatar2.png" alt="Avatar" class="avatar">
+        </div>
+        <div class="container">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+        
+            <button type="submit">Login</button>
+            <label style="float: left;">
+              <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+            <span style="float: right;">Forgot <a href="#">password?</a></span>
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+            <span class="psw" style="float: right;">SignUp <a href="#">Here</a></span>
+        </div>
+      </form>
+  </div>
+
+  <script>
+    var modal = document.getElementById('id01');
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+  </script>
+
+
+  <header>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-1" id="id0">
+          <i><a href="index.html" class="logo">Flipkart</a><br></i>
+          <i><a href="#" class="plusMem">ExplorePlus</a></i>
+        </div>
+        <div class="col-md-6" style="height: 45px;">
+          <div class="customDiv" id="searchBar">
+            <input type="text" name="search" class="search" placeholder="Search your favourite...">
+          </div>
+        </div>
+        <div class="col-md-2 offset-md-1" style="height: 50px;">
+          <div class="customDiv" style="text-align: center;">
+            <a href="#" id="login" onclick="document.getElementById('id01').style.display='block'">Login & SignUp</a>
+          </div>
+        </div>
+        <div class="col-md-1" style="height: 50px;">
+          <div class="customDiv">
+            <a href="#" id="more">More</a>
+          </div>
+        </div>
+        <div class="col-md-1" style="height: 50px;">
+          <div class="customDiv">
+            <a href="#" id="cart">Cart</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section>
+    <div class="container-fluid">
+      <div class="row" id="nav">
+        <div class="navBar">
+          <a href="1.html" class="navHead">Electronics</a>
+        </div>
+        <div class="navBar">
+          <a href="TVs.html" class="navHead">TVs & Appliances</a>
+        </div>
+        <div class="navBar">
+          <a href="Men.html" class="navHead">Men</a>
+        </div>
+        <div class="navBar">
+          <a href="Women.html" class="navHead">Women</a>
+        </div>
+        <div class="navBar">
+          <a href="BabyKids.html" class="navHead">Baby & Kids</a>
+        </div>
+        <div class="navBar">
+          <a href="HomeFurniture.html" class="navHead">Home & Furniture</a>
+        </div>
+        <div class="navBar">
+          <a class="navHead">Books, Sports & More</a>
+        </div>
+        <div class="navBar">
+          <a class="navHead">Offer Zone</a>
+        </div>
+      </div>
+    </div>
+
+
+    <h2 style="background-color: white;"><a href="electronicsdata.html" style="padding-left: 100px; margin: 0;">Electronics</a></h2>
+
+    <div class="row">
+      <div class="column" >
+        <h2>Mobile</h2>
+        <p> Mi</p>
+        <p>Realme</p>
+        <p>Samsung</p>
+        <p>Lenove</p>
+        <p>Oppo</p>
+        <p>Apple</p>
+        <p>Vivo</p>
+        <p>Honor</p>
+        <p>Pasasonic</p>
+        <p>Moto one power</p>
+        <p> POCO F1</p>
+        <p>Nkia 6.1 plus</p>
+        <p>Nokia 5.1 plus</p>
+        <p>iphone XS and Xs Max</p>
+        <p>Realme</p>
+        <h2>Mobile Accessories</h2>
+        <p>Mobiles Cases</p>
+        <p>Power Bank</p>
+        <p>Mmory Card</p>
+        <p>Mobile Cables</p>
+        <p>Mobile Charge</p>
+      </div>
+      <div class="column">
+        <h2>Laptops</h2>
+        <p>Gaming Laptops</p>
+        <h2>Desktop PCs</h2>
+        <h2>Computer Accessories</h2>
+        <p>External Hard Disks</p>
+        <p>Pendrives</p>
+        <p>Mouse and Keyword</p>
+        <p>Laptop Bags</p>
+        <h2>Computer Peripherals</h2>
+        <p>Printers & Ink Cartridges</p>
+        <p>Monitors</p>
+        <h2>Tablets</h2>
+        <p>Apple IPads</p>
+        <p>Televisions</p>
+        <h2>Home Entertainment</h2>
+        <p>Home Audio Speakers</p>
+        <p>Bluetooth</p>
+        <p>DTH Set Top Box</p>
+      </div>
+      <div class="column">
+        <h2>Camer</h2>
+        <p>DSLR</p>
+        <p>Compact&Bridge Cameras</p>
+        <p>Sports & Action</p>
+        <h2>Camera Accessories</h2>
+        <p>Lens</p>
+        <p>Tripods</p>
+        <h2>Network Components</h2>
+        <p>Router</p>
+        <h2>Featurd</h2>
+        <p>Laptops On Buyback Guarantee</p>
+        <p>Filpkart</p>
+        <p>Li-Polymer Power Banks</p>
+        <p>Apple products</p>
+        <p>JBL speakers</p>
+        <p>Philps</p>
+        <p>Mircsoft Store</p>
+        <p>Mobile with External Warranty</p>
+        <p>Sony PS4 Pro& Slim</p> 
+      </div>
+
+
+
+  <footer style="width: 100%;">
+    <div class="container-fluid">
+      <div class="row" style="background-color: #00264d; height: auto; padding: 50px; text-align: none;">
+        <div class="col-md-7">
+          <div class="row">
+            <div class="col-md-3">
+              <ul>
+                <p id="ulD">ABOUT</p>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Flipkart Stories</a></li>
+                <li><a href="#">Press</a></li>
+              </ul>
+            </div>
+            <div class="col-md-3">
+              <ul>
+                <p id="ulD">HELP</p>
+                <li><a href="#">Payments</a></li>
+                <li><a href="#">Shipping</a></li>
+                <li><a href="#">Cancellation & Returns</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Report Infringement</a></li>
+              </ul>
+            </div>
+            <div class="col-md-3">
+              <ul>
+                <p id="ulD">POLICY</p>
+                <li><a href="#">Return Policy</a></li>
+                <li><a href="#">Terms of Use</a></li>
+                <li><a href="#">Security</a></li>
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Sitemap</a></li>
+                <li><a href="#">EPR Compliance</a></li>
+              </ul>
+            </div>
+            <div class="col-md-3">
+              <ul>
+                <p id="ulD">SOCIAL</p>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">YouTube</a></li>
+                <li><a href="#">Google Plus</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="row">
+            <div class="col-md-6" style="padding: 0; margin: 0;">
+              <div style="border-left: 1px solid gray; padding-left: 20px;">
+                <p id="ulD">Mail Us:</p>
+                <p>Flipkart Internet Pvt Ltd Block B (Begonia),<br>Ground Floor, Embassy Tech Village,<br>Outer Ring Road, Devarabeesanahalli Village,<br>Varthur Hobli, Bengaluru East Taluk,<br>Bengaluru District,<br>Karnataka, India, 560103.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <p id="ulD">Registered Office Address:</p>
+              <p>Flipkart Internet Private Limited,<br>Vaishnavi Summit, Ground Floor, 7th Main,<br>80 Feet Road, 3rd Block,<br>Koramangala,<br>Bengaluru - 560034<br>India<br>CIN : U51109KA2012PTC066107<br>Telephone: 1800 208 9898</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
